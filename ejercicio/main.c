@@ -15,6 +15,10 @@ int main() {
     findNode(&list, 20); // Buscar el nodo con valor 20
     findNode(&list, 30); // Buscar el nodo con valor 30
 
+    // Funciones de impresion
+    printListForward(&list); // Imprimir la lista hacia adelante
+    printListBackward(&list); // Imprimir la lista hacia atras
+    
     // Imprimir la lista
     Node* current = list.head;
     while (current != NULL) {

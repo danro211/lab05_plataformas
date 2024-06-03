@@ -5,14 +5,13 @@
 int main() {
     DoubleList list = {NULL, NULL}; // Inicializar una lista vacia
 
-    // Insertar algunos nodos al inicio para variedad
-    insertAtFront(&list, 10);
-    insertAtFront(&list, 20);
-
-    // Insertar nodos al final
-    insertAtEnd(&list, 30);
-    insertAtEnd(&list, 40);
-
+    insertAtEnd(&list, 10); // Agregar al final
+    insertAtFront(&list, 20); // Agregar al inicio
+    insertAtIndex(&list, 30, 1); // Agregar en la posicion 1
+    insertAtIndex(&list, 40, 3);// Agregar en la posicion 3
+    insertAtEnd(&list, 30); // Agregar al final
+    deleteNode(&list, 30); // Eliminar el primer nodo con el valor 30
+    
     // Imprimir la lista
     Node* current = list.head;
     while (current != NULL) {

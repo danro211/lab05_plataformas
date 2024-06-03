@@ -38,6 +38,65 @@ void insertAtEnd(DoubleList* list, int data) {
     }
 }
 
+// Funcion para insertar nodo en indice especifico
+void insertAtIndex(DoubleList* list, int data, int index) {
+    if (index < 0) {
+        return; // Index invalido
+    }
+
+    Node* newNode = (Node*) malloc(sizeof(Node));
+    if (newNode == NULL) {
+        return; // Fallo de malloc
+    }
+    newNode->data = data;
+
+    if (index == 0) { // Insertar al inicio
+        insertAtFront(list, data);
+        return;
+    }
+
+    Node* current = list->head;
+    for (int i = 0; current != NULL && i < index - 1; i++) {
+        current = current->next;
+    }
+
+    if (current == NULL) { // Index fuera de los limites, insertar al final
+        insertAtEnd(list, data);
+    } else { // Insertar entre current y current->next
+        newNode->next = current->next;
+        newNode->prev = current;
+        if (current->next != NULL) {
+            current->next->prev = newNode;
+        }
+        current->next = newNode;
+        if (newNode->next == NULL) { // Actualizar la cola si es necesario
+            list->tail = newNode;
+        }
+    }
+}
+
+// Funcion para eliminar nodo segun data
+void deleteNode(DoubleList* list, int data) {
+    Node* current = list->head;
+    while (current != NULL) {
+        if (current->data == data) {
+            if (current->prev != NULL) { // No es el primer nodo
+                current->prev->next = current->next;
+            } else { // Es el primer nodo
+                list->head = current->next;
+            }
+            if (current->next != NULL) { // No es el ultimo nodo
+                current->next->prev = current->prev;
+            } else { // Es el ultimo nodo
+                list->tail = current->prev;
+            }
+            free(current);
+            return; // Salir despues de eliminar el primer nodo encontrado
+        }
+        current = current->next;
+    }
+}
+
 // Funcion para liberar la lista
 void freeList(DoubleList* list) {
     Node* current = list->head;

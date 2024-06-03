@@ -1,4 +1,5 @@
 // double_list.c
+#include <stdio.h>
 #include "double_list.h"
 
 // Funcion para insertar un nodo al inicio de la lista
@@ -95,6 +96,24 @@ void deleteNode(DoubleList* list, int data) {
         }
         current = current->next;
     }
+}
+
+// Funcion para buscar un nodo con el valor especifico
+int findNode(DoubleList* list, int data) {
+    Node* current = list->head;
+    int index = 0;  // Usar un indice para saber la posicion del nodo
+
+    while (current != NULL) {
+        if (current->data == data) {
+            printf("Elemento %d encontrado en la posición %d\n", data, index);
+            return index;  // Retornar el indice si se encuentra el dato
+        }
+        current = current->next;
+        index++;
+    }
+
+    printf("Elemento %d no encontrado en la lista.\n", data);
+    return -1;  // Retornar -1 si el dato no se encuentra en la lista
 }
 
 // Funcion para liberar la lista

@@ -22,6 +22,7 @@ void insertAtFront(DoubleList* list, int data);
 void insertAtEnd(DoubleList* list, int data);
 void insertAtIndex(DoubleList* list, int data, int index);
 void deleteNode(DoubleList* list, int data);
+int findNode(DoubleList* list, int data);
 void freeList(DoubleList* list);
 
 

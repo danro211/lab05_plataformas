@@ -105,7 +105,7 @@ int findNode(DoubleList* list, int data) {
 
     while (current != NULL) {
         if (current->data == data) {
-            printf("Elemento %d encontrado en la posición %d\n", data, index);
+            printf("Elemento %d encontrado en la posicion %d\n", data, index);
             return index;  // Retornar el indice si se encuentra el dato
         }
         current = current->next;
@@ -130,14 +130,13 @@ void printListForward(DoubleList* list) {
 // Funcion que recorre lista de final a inicio
 void printListBackward(DoubleList* list) {
     Node* current = list->tail;  // Comienza en la cola de la lista
-    printf("Lista hacia atrás: ");
+    printf("Lista hacia atras: ");
     while (current != NULL) {    // Continuar hasta que no haya mas nodos
         printf("%d ", current->data);  // Imprimir el valor del nodo actual
         current = current->prev; // Retroceder al nodo anterior
     }
     printf("\n");  // Nueva linea al final de imprimir todos los nodos
 }
-
 
 // Funcion para liberar la lista
 void freeList(DoubleList* list) {
@@ -152,4 +151,3 @@ void freeList(DoubleList* list) {
     list->head = NULL; // Asegura que la cabeza de la lista es NULL
     list->tail = NULL; // Asegura que la cola de la lista es NULL
 }
-
